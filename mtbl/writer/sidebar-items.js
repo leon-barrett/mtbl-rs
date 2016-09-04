@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["CompressionType","Compression method used when writing an MTBL file."]],"struct":[["Writer","A struct to create an MTBL file from keys and values in sorted order."],["WriterOptions","Options for writing an MTBL file."]],"trait":[["Write","A trait for objects that can write an MTBL file."]]});

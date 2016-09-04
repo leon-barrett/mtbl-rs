@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `src/lib.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>lib.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+</pre><pre class='rust '>
+<span class='doccomment'>//! Rust bindings to the [mtbl](https://github.com/farsightsec/mtbl) library for</span>
+<span class='doccomment'>//! dealing with SSTables (immutable sorted map files).</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! SSTables (String-String Tables) are basically constant on-disk maps from</span>
+<span class='doccomment'>//! [u8] to [u8], like those used by</span>
+<span class='doccomment'>//! [CDB](http://www.corpit.ru/mjt/tinycdb.html) (which also has [Rust</span>
+<span class='doccomment'>//! bindings](https://github.com/andrew-d/tinycdb-rs)), except using sorted maps</span>
+<span class='doccomment'>//! instead of hashmaps. SSTables are suitable for storing the output of</span>
+<span class='doccomment'>//! mapreduces or other batch results for easy lookup later.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! Version 0.1.0 of this library is a rather literal translation of the mtbl C</span>
+<span class='doccomment'>//! API. Later versions may change the API to be friendlier and more in the</span>
+<span class='doccomment'>//! Rust idioms.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # Usage</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ## Creating a database</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! // Create a database, using a Sorter instead of a Writer so we can add</span>
+<span class='doccomment'>//! // keys in arbitrary (non-sorted) order.</span>
+<span class='doccomment'>//! {</span>
+<span class='doccomment'>//!   use mtbl::{Sorter,Write};</span>
+<span class='doccomment'>//!   let mut writer = mtbl::Sorter::create(&quot;data.mtbl&quot;);</span>
+<span class='doccomment'>//!   writer.add(&quot;key&quot;, &quot;value&quot;);</span>
+<span class='doccomment'>//!   // Data is flushed to file when the writer/sorter is destroyed.</span>
+<span class='doccomment'>//! }</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ## Reading from a database</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! use mtbl::{Read,Reader};</span>
+<span class='doccomment'>//! let reader = mtbl::Reader::open(&quot;data.mtbl&quot;);</span>
+<span class='doccomment'>//! // Get one element</span>
+<span class='doccomment'>//! let val: Option(Vec&lt;u8&gt;) = reader.get(&quot;key&quot;);</span>
+<span class='doccomment'>//! assert_eq!(val, Option(&quot;value&quot;.as_bytes()));</span>
+<span class='doccomment'>//! // Or iterate over all entries</span>
+<span class='doccomment'>//! for (key: Vec&lt;u8&gt;, value: Vec&lt;u8&gt;) in &amp;reader {</span>
+<span class='doccomment'>//!     f(key, value);</span>
+<span class='doccomment'>//! }</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # More details about MTBL</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! Quoting from the MTBL documentation:</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! &gt; mtbl is not a database library. It does not provide an updateable</span>
+<span class='doccomment'>//! &gt; key-value data store, but rather exposes primitives for creating,</span>
+<span class='doccomment'>//! &gt; searching and merging SSTable files. Unlike databases which use the</span>
+<span class='doccomment'>//! &gt; SSTable data structure internally as part of their data store, management</span>
+<span class='doccomment'>//! &gt; of SSTable files -- creation, merging, deletion, combining of search</span>
+<span class='doccomment'>//! &gt; results from multiple SSTables -- is left to the discretion of the mtbl</span>
+<span class='doccomment'>//! &gt; library user.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! &gt; mtbl SSTable files consist of a sequence of data blocks containing sorted</span>
+<span class='doccomment'>//! &gt; key-value pairs, where keys and values are arbitrary byte arrays. Data</span>
+<span class='doccomment'>//! &gt; blocks are optionally compressed using zlib or the Snappy library. The</span>
+<span class='doccomment'>//! &gt; data blocks are followed by an index block, allowing for fast searches</span>
+<span class='doccomment'>//! &gt; over the keyspace.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! &gt; The basic mtbl interface is the writer, which receives a sequence of</span>
+<span class='doccomment'>//! &gt; key-value pairs in sorted order with no duplicate keys, and writes them</span>
+<span class='doccomment'>//! &gt; to data blocks in the SSTable output file. An index containing offsets to</span>
+<span class='doccomment'>//! &gt; data blocks and the last key in each data block is buffered in memory</span>
+<span class='doccomment'>//! &gt; until the writer object is closed, at which point the index is written to</span>
+<span class='doccomment'>//! &gt; the end of the SSTable file. This allows SSTable files to be written in a</span>
+<span class='doccomment'>//! &gt; single pass with sequential I/O operations only.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! &gt; Once written, SSTable files can be searched using the mtbl reader</span>
+<span class='doccomment'>//! &gt; interface. Searches can retrieve key-value pairs based on an exact key</span>
+<span class='doccomment'>//! &gt; match, a key prefix match, or a key range. Results are retrieved using a</span>
+<span class='doccomment'>//! &gt; simple iterator interface.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! &gt; The mtbl library also provides two utility interfaces which facilitate a</span>
+<span class='doccomment'>//! &gt; sort-and-merge workflow for bulk data loading. The sorter interface</span>
+<span class='doccomment'>//! &gt; receives arbitrarily ordered key-value pairs and provides them in sorted</span>
+<span class='doccomment'>//! &gt; order, buffering to disk as needed. The merger interface reads from</span>
+<span class='doccomment'>//! &gt; multiple SSTables simultaneously and provides the key-value pairs from</span>
+<span class='doccomment'>//! &gt; the combined inputs in sorted order. Since mtbl does not allow duplicate</span>
+<span class='doccomment'>//! &gt; keys in an SSTable file, both the sorter and merger interfaces require a</span>
+<span class='doccomment'>//! &gt; caller-provided merge function which will be called to merge multiple</span>
+<span class='doccomment'>//! &gt; values for the same key. These interfaces also make use of sequential I/O</span>
+<span class='doccomment'>//! &gt; operations only.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # Why prefer MTBL over CDB or other constant databases?</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! * Storing data in sorted order makes merging files easy.</span>
+<span class='doccomment'>//! * Compression is built-in (options: [zlib](http://www.zlib.net/) and</span>
+<span class='doccomment'>//!   [snappy](https://github.com/google/snappy)).</span>
+<span class='doccomment'>//! * The library code is a little more modern and uses mmapped files to have</span>
+<span class='doccomment'>//!   a properly immutable (and therefore thread-safe) representation -- it</span>
+<span class='doccomment'>//!   doesn&#39;t go mucking about with file pointers.</span>
+
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_name</span> <span class='op'>=</span> <span class='string'>&quot;mtbl&quot;</span>]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_type</span> <span class='op'>=</span> <span class='string'>&quot;lib&quot;</span>]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>non_upper_case_globals</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>unused_qualifications</span>)]</span>
+
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>libc</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mtbl_sys</span>;
+
+<span class='kw'>mod</span> <span class='ident'>fileset</span>;
+<span class='kw'>mod</span> <span class='ident'>merger</span>;
+<span class='kw'>mod</span> <span class='ident'>reader</span>;
+<span class='kw'>mod</span> <span class='ident'>sorter</span>;
+<span class='kw'>mod</span> <span class='ident'>writer</span>;
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>fileset</span>::<span class='ident'>Fileset</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>fileset</span>::<span class='ident'>FilesetOptions</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>merger</span>::<span class='ident'>MergeFn</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>merger</span>::<span class='ident'>Merger</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>reader</span>::<span class='ident'>ReaderOptions</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>reader</span>::<span class='ident'>Read</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>reader</span>::<span class='ident'>Reader</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sorter</span>::<span class='ident'>SorterOptions</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>sorter</span>::<span class='ident'>Sorter</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>writer</span>::<span class='ident'>WriterOptions</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>writer</span>::<span class='ident'>CompressionType</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>writer</span>::<span class='ident'>Write</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>writer</span>::<span class='ident'>Writer</span>;
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "mtbl";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

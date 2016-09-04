@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Reader","A reader for a single MTBL file."],["ReaderOptions","MTBL Reader opening options."]],"trait":[["Read","A trait for objects that can read keys from an MTBL file."]]});
