@@ -78,7 +78,7 @@ impl FilesetOptions {
 ///
 /// ```
 /// $ cp my-data.mtbl /tmp/my-data.mtbl
-/// $ echo 'my-data.mtbl' >> /tmp/fs.mtbl-fileset
+/// $ echo "my-data.mtbl" >> /tmp/fs.mtbl-fileset
 /// ...
 /// let fileset = Fileset::open_from_path("/tmp/fs.mtbl-fileset", my_merge_fn);
 /// ```
