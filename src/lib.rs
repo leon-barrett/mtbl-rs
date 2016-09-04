@@ -17,11 +17,14 @@
 //! ## Creating a database
 //!
 //! ```
-//! // We use a Sorter here for generality; Writers require input to be in
-//! // sorted order.
-//! use mtbl::{Sorter,Write};
-//! let mut writer = mtbl::Sorter::create("data.mtbl");
-//! writer.add("key", "value");
+//! // Create a database, using a Sorter instead of a Writer so we can add
+//! // keys in arbitrary (non-sorted) order.
+//! {
+//!   use mtbl::{Sorter,Write};
+//!   let mut writer = mtbl::Sorter::create("data.mtbl");
+//!   writer.add("key", "value");
+//!   // Data is flushed to file when the writer/sorter is destroyed.
+//! }
 //! ```
 //!
 //! ## Reading from a database
@@ -30,12 +33,12 @@
 //! use mtbl::{Read,Reader};
 //! let reader = mtbl::Reader::open("data.mtbl");
 //! // Get one element
-//! reader.get("key");
+//! let val: Option(Vec<u8>) = reader.get("key");
+//! assert_eq!(val, Option("value".as_bytes()));
 //! // Or iterate over all entries
 //! for (key: Vec<u8>, value: Vec<u8>) in &reader {
 //!     f(key, value);
 //! }
-//! assert_eq!(reader.get("key"), Option("value".as_bytes()));
 //! ```
 //!
 //! # More details about MTBL
