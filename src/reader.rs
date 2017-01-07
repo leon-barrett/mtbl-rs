@@ -9,6 +9,8 @@ use std::slice;
 
 use mtbl_sys;
 
+pub use mtbl_sys::CompressionType;
+
 /// A trait for objects that can read keys from an MTBL file.
 ///
 /// A Read is accessed like a sorted map, with each key mapping to one value.
@@ -155,23 +157,40 @@ impl<'a> Drop for Iter<'a> {
 /// MTBL Reader opening options.
 #[derive(Clone,Copy)]
 pub struct ReaderOptions {
-    // in mtbl v0.8.0
-    // pub madvise_random: Option<bool>,
     /// Whether or not the CRC32C checksum on each data block should be verified
     /// or not. If verify_checksums is enabled, a checksum mismatch will cause a
     /// runtime error. The mtbl default is false.
     pub verify_checksums: Option<bool>,
+    /// Specifies whether the kernel should be advised if the data access
+    /// patterns are expected to be random or not. This may hurt some workloads
+    /// but help others. This defaults to false.
+    ///
+    /// This option can be explicitly overridden by setting the environment
+    /// variable MTBL_READER_MADVISE_RANDOM to the string "0" (force disable) or
+    /// "1" (force enable).
+    ///
+    /// This option only has any effect on systems that have the posix_madvise
+    /// or madvise system calls.
+    pub madvise_random: Option<bool>,
 }
 
 impl ReaderOptions {
     /// Create a ReaderOptions containing only defaults.
     pub fn new() -> ReaderOptions {
-        ReaderOptions { verify_checksums: None }
+        ReaderOptions {
+            verify_checksums: None,
+            madvise_random: None,
+        }
     }
 
     /// Create a new options with verify_checksums set.
     pub fn verify_checksums(self: &Self, verify_checksums: bool) -> ReaderOptions {
         ReaderOptions { verify_checksums: Some(verify_checksums), ..*self }
+    }
+
+    /// Create a new options with madvise_random set.
+    pub fn madvise_random(self: &Self, madvise_random: bool) -> ReaderOptions {
+        ReaderOptions { madvise_random: Some(madvise_random), ..*self }
     }
 
     /// Open an MTBL reader with these options from a file described by the
@@ -188,6 +207,9 @@ impl ReaderOptions {
             if let Some(verify_checksums) = self.verify_checksums {
                 mtbl_sys::mtbl_reader_options_set_verify_checksums(mtbl_options, verify_checksums);
             }
+            if let Some(madvise_random) = self.madvise_random {
+                mtbl_sys::mtbl_reader_options_set_madvise_random(mtbl_options, madvise_random);
+            }
             let mtbl_reader = mtbl_sys::mtbl_reader_init_fd(fd, mtbl_options);
             mtbl_sys::mtbl_reader_options_destroy(&mut mtbl_options);
             if mtbl_reader.is_null() {
@@ -197,6 +219,7 @@ impl ReaderOptions {
                     options: *self,
                     mtbl_reader: mtbl_reader,
                     mtbl_source: mtbl_sys::mtbl_reader_source(mtbl_reader),
+                    mtbl_metadata: mtbl_sys::mtbl_reader_metadata(mtbl_reader),
                 })
             }
         }
@@ -214,6 +237,7 @@ pub struct Reader {
     pub options: ReaderOptions,
     mtbl_reader: *mut mtbl_sys::mtbl_reader,
     mtbl_source: *const mtbl_sys::mtbl_source,
+    mtbl_metadata: *const mtbl_sys::mtbl_metadata,
 }
 
 impl Reader {
@@ -225,6 +249,69 @@ impl Reader {
     /// Open an MTBL reader from a file object.
     pub fn open_from_file<T: 'static + AsRawFd>(file: &T) -> IOResult<Reader> {
         ReaderOptions::new().open_from_file(file)
+    }
+
+    /// Metadata: Byte offset in the MTBL file where the index begins.
+    pub fn index_block_offset(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_index_block_offset(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Maximum size of an uncompressed data block, see mtbl_writer(3).
+    pub fn data_block_size(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_data_block_size(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: One of the compression values allowed by mtbl_writer(3).
+    pub fn compression_algorithm(self: &Self) -> CompressionType {
+        unsafe {
+            mtbl_sys::mtbl_metadata_compression_algorithm(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of key-value entries.
+    pub fn count_entries(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_count_entries(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of data blocks.
+    pub fn count_data_blocks(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_count_data_blocks(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of bytes consumed by data blocks.
+    pub fn bytes_data_blocks(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_bytes_data_blocks(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of bytes consumed by the index.
+    pub fn bytes_index_block(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_bytes_index_block(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of bytes that all keys would occupy if stored end-to-end in a byte array with no delimiters.
+    pub fn bytes_keys(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_bytes_keys(self.mtbl_metadata)
+        }
+    }
+
+    /// Metadata: Total number of bytes that all values in the file would occupy if stored end-to-end in a byte array with no delimiters.
+    pub fn bytes_values(self: &Self) -> u64 {
+        unsafe {
+            mtbl_sys::mtbl_metadata_bytes_values(self.mtbl_metadata)
+        }
     }
 }
 
@@ -268,7 +355,7 @@ mod tests {
     use std::sync::Arc;
     use std::thread;
 
-    use reader::{ReaderOptions, Read, Reader};
+    use reader::{CompressionType, ReaderOptions, Read, Reader};
     use writer::{Write, Writer};
 
     // Create a test MTBL file.
@@ -336,9 +423,11 @@ mod tests {
         create_mtbl(tempfile_writer);
         let reader = ReaderOptions::new()
                          .verify_checksums(true)
+                         .madvise_random(true)
                          .open_from_file(&tempfile_reader)
                          .unwrap();
         assert_eq!(reader.options.verify_checksums, Some(true));
+        assert_eq!(reader.options.madvise_random, Some(true));
         let mut it = reader.iter();
         assert_eq!(it.next(), Some(("one".as_bytes().to_vec(), "Hello".as_bytes().to_vec())));
         assert_eq!(it.next(), Some(("two".as_bytes().to_vec(), "world".as_bytes().to_vec())));
@@ -359,5 +448,25 @@ mod tests {
         for t in threads {
             assert_eq!(t.join().unwrap(), Some("Hello".as_bytes().to_vec()));
         }
+    }
+
+    #[test]
+    fn test_metadata() {
+        let tempfile_writer = NamedTempFile::new().unwrap();
+        let tempfile_reader = tempfile_writer.reopen().unwrap();
+        {
+            let mut writer = Writer::create_from_file(tempfile_writer).unwrap();
+            writer.add("one", "Hello").unwrap();
+        }
+        let reader = Reader::open_from_file(&tempfile_reader).unwrap();
+        assert_eq!(32, reader.index_block_offset());
+        assert_eq!(8192, reader.data_block_size());
+        assert_eq!(CompressionType::MTBL_COMPRESSION_ZLIB, reader.compression_algorithm());
+        assert_eq!(1, reader.count_entries());
+        assert_eq!(1, reader.count_data_blocks());
+        assert_eq!(32, reader.bytes_data_blocks());
+        assert_eq!(23, reader.bytes_index_block());
+        assert_eq!(3, reader.bytes_keys());
+        assert_eq!(5, reader.bytes_values());
     }
 }

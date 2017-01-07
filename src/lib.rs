@@ -8,7 +8,7 @@
 //! instead of hashmaps. SSTables are suitable for storing the output of
 //! mapreduces or other batch results for easy lookup later.
 //!
-//! Version 0.1.0 of this library is a rather literal translation of the mtbl C
+//! Version 0.2.0 of this library is a rather literal translation of the mtbl C
 //! API. Later versions may change the API to be friendlier and more in the
 //! Rust idioms.
 //!

@@ -1,7 +1,7 @@
 [package]
 
 name = "mtbl"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Leon Barrett <leon@barrettnexus.com>"]
 
 description = "Bindings to the MTBL C library (https://github.com/farsightsec/mtbl)"
@@ -16,10 +16,10 @@ license = "MIT/Apache-2.0"
 doctest = false
 
 [dependencies]
-libc = "0.2.15"
-mtbl-sys = "0.1.1"
+libc = "0.2.19"
+mtbl-sys = "0.2.0"
 
 [dev-dependencies]
-lz4 = "1.18.131"
-rand = "0.3.14"
+lz4 = "1.20.0"
+rand = "0.3.15"
 tempfile = "2.1.4"
