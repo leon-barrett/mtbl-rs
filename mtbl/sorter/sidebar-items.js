@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Sorter","A tool to create an MTBL file out of keys in any order."],["SorterOptions","Options used to create a `Sorter`."]]});

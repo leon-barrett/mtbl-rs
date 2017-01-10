@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,30 +44,52 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>mtbl</a>::<wbr><a class='struct' href=''>ReaderOptions</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-197' class='srclink' href='../src/mtbl/src/reader.rs.html#157-164' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-192' class='srclink' href='../src/mtbl/src/reader.rs.html#159-175' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ReaderOptions {
     pub verify_checksums: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+    pub madvise_random: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
 }</pre><div class='docblock'><p>MTBL Reader opening options.</p>
-</div><h2 class='fields'>Fields</h2>
-<table><tr class='stab '>
-                                  <td id='structfield.verify_checksums'><code>verify_checksums</code></td><td><div class='docblock'><p>Whether or not the CRC32C checksum on each data block should be verified
+</div><h2 class='fields'>Fields</h2><span id='structfield.verify_checksums' class='structfield'>
+                           <span id='verify_checksums.v' class='invisible'>
+                           <code>verify_checksums: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;</code>
+                           </span></span><span class='stab '></span><div class='docblock'><p>Whether or not the CRC32C checksum on each data block should be verified
 or not. If verify_checksums is enabled, a checksum mismatch will cause a
 runtime error. The mtbl default is false.</p>
-</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h4>
+</div><span id='structfield.madvise_random' class='structfield'>
+                           <span id='madvise_random.v' class='invisible'>
+                           <code>madvise_random: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;</code>
+                           </span></span><span class='stab '></span><div class='docblock'><p>Specifies whether the kernel should be advised if the data access
+patterns are expected to be random or not. This may hurt some workloads
+but help others. This defaults to false.</p>
+
+<p>This option can be explicitly overridden by setting the environment
+variable MTBL_READER_MADVISE_RANDOM to the string &quot;0&quot; (force disable) or
+&quot;1&quot; (force enable).</p>
+
+<p>This option only has any effect on systems that have the posix_madvise
+or madvise system calls.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-199' class='srclink' href='../src/mtbl/src/reader.rs.html#177-227' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span></h4>
 <div class='docblock'><p>Create a ReaderOptions containing only defaults.</p>
-</div><h4 id='method.verify_checksums' class='method'><code>fn <a href='#method.verify_checksums' class='fnname'>verify_checksums</a>(self: &amp;Self, verify_checksums: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h4>
+</div><h4 id='method.verify_checksums' class='method'><span id='verify_checksums.v-1' class='invisible'><code>fn <a href='#method.verify_checksums' class='fnname'>verify_checksums</a>(self: &amp;Self, verify_checksums: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span></h4>
 <div class='docblock'><p>Create a new options with verify_checksums set.</p>
-</div><h4 id='method.open_from_path' class='method'><code>fn <a href='#method.open_from_path' class='fnname'>open_from_path</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>&gt;&gt;(self: &amp;Self, path: T) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>IOResult</a>&lt;<a class='struct' href='../mtbl/struct.Reader.html' title='mtbl::Reader'>Reader</a>&gt;</code></h4>
+</div><h4 id='method.madvise_random' class='method'><span id='madvise_random.v-1' class='invisible'><code>fn <a href='#method.madvise_random' class='fnname'>madvise_random</a>(self: &amp;Self, madvise_random: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span></h4>
+<div class='docblock'><p>Create a new options with madvise_random set.</p>
+</div><h4 id='method.open_from_path' class='method'><span id='open_from_path.v' class='invisible'><code>fn <a href='#method.open_from_path' class='fnname'>open_from_path</a>&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>&gt;&gt;(self: &amp;Self, path: T) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>IOResult</a>&lt;<a class='struct' href='../mtbl/struct.Reader.html' title='mtbl::Reader'>Reader</a>&gt;</code></span></h4>
 <div class='docblock'><p>Open an MTBL reader with these options from a file described by the
 given path.</p>
-</div><h4 id='method.open_from_file' class='method'><code>fn <a href='#method.open_from_file' class='fnname'>open_from_file</a>&lt;T: 'static + <a class='trait' href='https://doc.rust-lang.org/nightly/std/sys/ext/io/trait.AsRawFd.html' title='std::sys::ext::io::AsRawFd'>AsRawFd</a>&gt;(self: &amp;Self, file: &amp;T) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>IOResult</a>&lt;<a class='struct' href='../mtbl/struct.Reader.html' title='mtbl::Reader'>Reader</a>&gt;</code></h4>
+</div><h4 id='method.open_from_file' class='method'><span id='open_from_file.v' class='invisible'><code>fn <a href='#method.open_from_file' class='fnname'>open_from_file</a>&lt;T:&nbsp;'static + <a class='trait' href='https://doc.rust-lang.org/nightly/std/sys/ext/io/trait.AsRawFd.html' title='std::sys::ext::io::AsRawFd'>AsRawFd</a>&gt;(self: &amp;Self, file: &amp;T) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>IOResult</a>&lt;<a class='struct' href='../mtbl/struct.Reader.html' title='mtbl::Reader'>Reader</a>&gt;</code></span></h4>
 <div class='docblock'><p>Open an MTBL reader with these options from a file object.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></h4>
-<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
-</div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-195' class='srclink' href='../src/mtbl/src/reader.rs.html#158' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../mtbl/struct.ReaderOptions.html' title='mtbl::ReaderOptions'>ReaderOptions</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-198' class='srclink' href='../src/mtbl/src/reader.rs.html#158' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -89,6 +112,8 @@ given path.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

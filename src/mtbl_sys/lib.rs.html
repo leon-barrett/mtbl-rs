@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/leon/.cargo/registry/src/github.com-88ac128001ac3a9a/mtbl-sys-0.1.1/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/leon/.cargo/registry/src/github.com-1ecc6299db9ec823/mtbl-sys-0.2.0/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -374,6 +375,44 @@
 <span id="331">331</span>
 <span id="332">332</span>
 <span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright (c) 2016 Leon Barrett</span>
 <span class='comment'>//</span>
@@ -391,7 +430,7 @@
 <span class='doccomment'>//! bindings](https://github.com/andrew-d/tinycdb-rs), except using sorted maps</span>
 <span class='doccomment'>//! instead of hashmaps.</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! Version 0.1 of mtbl-sys covers the 0.6 version of the MTBL C library.</span>
+<span class='doccomment'>//! Version 0.2 of mtbl-sys covers the 0.8 version of the MTBL C library.</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! # Function documentation</span>
 <span class='doccomment'>//!</span>
@@ -454,6 +493,8 @@
     <span class='ident'>MTBL_COMPRESSION_NONE</span> <span class='op'>=</span> <span class='number'>0</span>,
     <span class='ident'>MTBL_COMPRESSION_SNAPPY</span> <span class='op'>=</span> <span class='number'>1</span>,
     <span class='ident'>MTBL_COMPRESSION_ZLIB</span> <span class='op'>=</span> <span class='number'>2</span>,
+    <span class='ident'>MTBL_COMPRESSION_LZ4</span> <span class='op'>=</span> <span class='number'>3</span>,
+    <span class='ident'>MTBL_COMPRESSION_LZ4HC</span> <span class='op'>=</span> <span class='number'>4</span>,
 }
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>,<span class='ident'>Copy</span>,<span class='ident'>Debug</span>,<span class='ident'>PartialEq</span>)]</span>
@@ -472,6 +513,8 @@
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>mtbl_reader</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>mtbl_reader_options</span>;
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>mtbl_metadata</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>mtbl_writer</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
@@ -570,18 +613,50 @@
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_source</span>(<span class='ident'>reader</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader</span>) <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_source</span>;
 
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_metadata</span>(<span class='ident'>reader</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader</span>) <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>;
+
     <span class='comment'>// reader options</span>
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_options_init</span>() <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader_options</span>;
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_options_destroy</span>(<span class='ident'>options</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader_options</span>);
 
-    <span class='comment'>// in mtbl v0.8.0</span>
-    <span class='comment'>// pub fn mtbl_reader_options_set_madvise_random(options: *mut mtbl_reader_options,</span>
-    <span class='comment'>//                                               madvise_random: bool);</span>
-
+    <span class='comment'>// defaults to false</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_options_set_verify_checksums</span>(<span class='ident'>options</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader_options</span>,
                                                     <span class='ident'>verify_checksums</span>: <span class='ident'>bool</span>);
+
+    <span class='comment'>// defaults to false</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_reader_options_set_madvise_random</span>(<span class='ident'>options</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_reader_options</span>,
+                                                  <span class='ident'>madvise_random</span>: <span class='ident'>bool</span>);
+
+    <span class='comment'>// reader metadata</span>
+
+    <span class='doccomment'>/// Byte offset in the MTBL file where the index begins.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_index_block_offset</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Maximum size of an uncompressed data block, see mtbl_writer(3).</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_data_block_size</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// One of the compression values allowed by mtbl_writer(3).</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_compression_algorithm</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>CompressionType</span>;
+
+    <span class='doccomment'>/// Total number of key-value entries.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_count_entries</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Total number of data blocks.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_count_data_blocks</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Total number of bytes consumed by data blocks.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_bytes_data_blocks</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Total number of bytes consumed by the index.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_bytes_index_block</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Total number of bytes that all keys would occupy if stored end-to-end in a byte array with no delimiters.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_bytes_keys</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
+
+    <span class='doccomment'>/// Total number of bytes that all values in the file would occupy if stored end-to-end in a byte array with no delimiters.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_metadata_bytes_values</span>(<span class='ident'>m</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_metadata</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>;
 
     <span class='comment'>// merger</span>
 
@@ -617,6 +692,8 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_fileset_destroy</span>(<span class='ident'>fileset</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_fileset</span>);
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_fileset_reload</span>(<span class='ident'>fileset</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_fileset</span>);
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_fileset_reload_now</span>(<span class='ident'>fileset</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_fileset</span>);
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mtbl_fileset_source</span>(<span class='ident'>fileset</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_fileset</span>) <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_source</span>;
 
@@ -732,6 +809,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

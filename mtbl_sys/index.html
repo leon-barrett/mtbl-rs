@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>mtbl_sys</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/mtbl_sys/lib.rs.html#9-333' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/mtbl_sys/lib.rs.html#9-371' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Rust FFI interface to the <a href="https://github.com/farsightsec/mtbl">mtbl</a> C
 library for dealing with SSTables (write-once sorted map files).</p>
 
@@ -55,7 +56,7 @@ library for dealing with SSTables (write-once sorted map files).</p>
 bindings</a>, except using sorted maps
 instead of hashmaps.</p>
 
-<p>Version 0.1 of mtbl-sys covers the 0.6 version of the MTBL C library.</p>
+<p>Version 0.2 of mtbl-sys covers the 0.8 version of the MTBL C library.</p>
 
 <h1 id='function-documentation' class='section-header'><a href='#function-documentation'>Function documentation</a></h1>
 <p>For documentation about each function, see MTBL&#39;s extensive man pages, e.g.
@@ -105,584 +106,603 @@ operations only.</p>
 </blockquote>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_fileset.html'
-                               title='mtbl_sys::mtbl_fileset'>mtbl_fileset</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_fileset_options.html'
-                               title='mtbl_sys::mtbl_fileset_options'>mtbl_fileset_options</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_iter.html'
-                               title='mtbl_sys::mtbl_iter'>mtbl_iter</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_merger.html'
-                               title='mtbl_sys::mtbl_merger'>mtbl_merger</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_merger_options.html'
-                               title='mtbl_sys::mtbl_merger_options'>mtbl_merger_options</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_reader.html'
-                               title='mtbl_sys::mtbl_reader'>mtbl_reader</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_reader_options.html'
-                               title='mtbl_sys::mtbl_reader_options'>mtbl_reader_options</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_sorter.html'
-                               title='mtbl_sys::mtbl_sorter'>mtbl_sorter</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_sorter_options.html'
-                               title='mtbl_sys::mtbl_sorter_options'>mtbl_sorter_options</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_source.html'
-                               title='mtbl_sys::mtbl_source'>mtbl_source</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_writer.html'
-                               title='mtbl_sys::mtbl_writer'>mtbl_writer</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.mtbl_writer_options.html'
-                               title='mtbl_sys::mtbl_writer_options'>mtbl_writer_options</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_fileset.html'
+                                  title='mtbl_sys::mtbl_fileset'>mtbl_fileset</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_fileset_options.html'
+                                  title='mtbl_sys::mtbl_fileset_options'>mtbl_fileset_options</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_iter.html'
+                                  title='mtbl_sys::mtbl_iter'>mtbl_iter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_merger.html'
+                                  title='mtbl_sys::mtbl_merger'>mtbl_merger</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_merger_options.html'
+                                  title='mtbl_sys::mtbl_merger_options'>mtbl_merger_options</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_metadata.html'
+                                  title='mtbl_sys::mtbl_metadata'>mtbl_metadata</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_reader.html'
+                                  title='mtbl_sys::mtbl_reader'>mtbl_reader</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_reader_options.html'
+                                  title='mtbl_sys::mtbl_reader_options'>mtbl_reader_options</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_sorter.html'
+                                  title='mtbl_sys::mtbl_sorter'>mtbl_sorter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_sorter_options.html'
+                                  title='mtbl_sys::mtbl_sorter_options'>mtbl_sorter_options</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_source.html'
+                                  title='mtbl_sys::mtbl_source'>mtbl_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_writer.html'
+                                  title='mtbl_sys::mtbl_writer'>mtbl_writer</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.mtbl_writer_options.html'
+                                  title='mtbl_sys::mtbl_writer_options'>mtbl_writer_options</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.CompressionType.html'
-                               title='mtbl_sys::CompressionType'>CompressionType</a></td>
-                        <td class='docblock short'>
-                             <p>Compression method used when writing an MTBL file.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.MtblRes.html'
-                               title='mtbl_sys::MtblRes'>MtblRes</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.CompressionType.html'
+                                  title='mtbl_sys::CompressionType'>CompressionType</a></td>
+                           <td class='docblock-short'>
+                                <p>Compression method used when writing an MTBL file.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.MtblRes.html'
+                                  title='mtbl_sys::MtblRes'>MtblRes</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_crc32c.html'
-                               title='mtbl_sys::mtbl_crc32c'>mtbl_crc32c</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_destroy.html'
-                               title='mtbl_sys::mtbl_fileset_destroy'>mtbl_fileset_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_init.html'
-                               title='mtbl_sys::mtbl_fileset_init'>mtbl_fileset_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_options_destroy.html'
-                               title='mtbl_sys::mtbl_fileset_options_destroy'>mtbl_fileset_options_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_options_init.html'
-                               title='mtbl_sys::mtbl_fileset_options_init'>mtbl_fileset_options_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_options_set_merge_func.html'
-                               title='mtbl_sys::mtbl_fileset_options_set_merge_func'>mtbl_fileset_options_set_merge_func</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_options_set_reload_interval.html'
-                               title='mtbl_sys::mtbl_fileset_options_set_reload_interval'>mtbl_fileset_options_set_reload_interval</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_reload.html'
-                               title='mtbl_sys::mtbl_fileset_reload'>mtbl_fileset_reload</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fileset_source.html'
-                               title='mtbl_sys::mtbl_fileset_source'>mtbl_fileset_source</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fixed_decode32.html'
-                               title='mtbl_sys::mtbl_fixed_decode32'>mtbl_fixed_decode32</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fixed_decode64.html'
-                               title='mtbl_sys::mtbl_fixed_decode64'>mtbl_fixed_decode64</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fixed_encode32.html'
-                               title='mtbl_sys::mtbl_fixed_encode32'>mtbl_fixed_encode32</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_fixed_encode64.html'
-                               title='mtbl_sys::mtbl_fixed_encode64'>mtbl_fixed_encode64</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_iter_destroy.html'
-                               title='mtbl_sys::mtbl_iter_destroy'>mtbl_iter_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_iter_next.html'
-                               title='mtbl_sys::mtbl_iter_next'>mtbl_iter_next</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_add_source.html'
-                               title='mtbl_sys::mtbl_merger_add_source'>mtbl_merger_add_source</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_destroy.html'
-                               title='mtbl_sys::mtbl_merger_destroy'>mtbl_merger_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_init.html'
-                               title='mtbl_sys::mtbl_merger_init'>mtbl_merger_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_options_destroy.html'
-                               title='mtbl_sys::mtbl_merger_options_destroy'>mtbl_merger_options_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_options_init.html'
-                               title='mtbl_sys::mtbl_merger_options_init'>mtbl_merger_options_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_options_set_merge_func.html'
-                               title='mtbl_sys::mtbl_merger_options_set_merge_func'>mtbl_merger_options_set_merge_func</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_merger_source.html'
-                               title='mtbl_sys::mtbl_merger_source'>mtbl_merger_source</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_destroy.html'
-                               title='mtbl_sys::mtbl_reader_destroy'>mtbl_reader_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_init.html'
-                               title='mtbl_sys::mtbl_reader_init'>mtbl_reader_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_init_fd.html'
-                               title='mtbl_sys::mtbl_reader_init_fd'>mtbl_reader_init_fd</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_options_destroy.html'
-                               title='mtbl_sys::mtbl_reader_options_destroy'>mtbl_reader_options_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_options_init.html'
-                               title='mtbl_sys::mtbl_reader_options_init'>mtbl_reader_options_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_options_set_verify_checksums.html'
-                               title='mtbl_sys::mtbl_reader_options_set_verify_checksums'>mtbl_reader_options_set_verify_checksums</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_reader_source.html'
-                               title='mtbl_sys::mtbl_reader_source'>mtbl_reader_source</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_add.html'
-                               title='mtbl_sys::mtbl_sorter_add'>mtbl_sorter_add</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_destroy.html'
-                               title='mtbl_sys::mtbl_sorter_destroy'>mtbl_sorter_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_init.html'
-                               title='mtbl_sys::mtbl_sorter_init'>mtbl_sorter_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_iter.html'
-                               title='mtbl_sys::mtbl_sorter_iter'>mtbl_sorter_iter</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_options_destroy.html'
-                               title='mtbl_sys::mtbl_sorter_options_destroy'>mtbl_sorter_options_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_options_init.html'
-                               title='mtbl_sys::mtbl_sorter_options_init'>mtbl_sorter_options_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_options_set_max_memory.html'
-                               title='mtbl_sys::mtbl_sorter_options_set_max_memory'>mtbl_sorter_options_set_max_memory</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_options_set_merge_func.html'
-                               title='mtbl_sys::mtbl_sorter_options_set_merge_func'>mtbl_sorter_options_set_merge_func</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_options_set_temp_dir.html'
-                               title='mtbl_sys::mtbl_sorter_options_set_temp_dir'>mtbl_sorter_options_set_temp_dir</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_sorter_write.html'
-                               title='mtbl_sys::mtbl_sorter_write'>mtbl_sorter_write</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_source_get.html'
-                               title='mtbl_sys::mtbl_source_get'>mtbl_source_get</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_source_get_prefix.html'
-                               title='mtbl_sys::mtbl_source_get_prefix'>mtbl_source_get_prefix</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_source_get_range.html'
-                               title='mtbl_sys::mtbl_source_get_range'>mtbl_source_get_range</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_source_iter.html'
-                               title='mtbl_sys::mtbl_source_iter'>mtbl_source_iter</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_decode32.html'
-                               title='mtbl_sys::mtbl_varint_decode32'>mtbl_varint_decode32</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_decode64.html'
-                               title='mtbl_sys::mtbl_varint_decode64'>mtbl_varint_decode64</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_encode32.html'
-                               title='mtbl_sys::mtbl_varint_encode32'>mtbl_varint_encode32</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_encode64.html'
-                               title='mtbl_sys::mtbl_varint_encode64'>mtbl_varint_encode64</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_length.html'
-                               title='mtbl_sys::mtbl_varint_length'>mtbl_varint_length</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_varint_length_packed.html'
-                               title='mtbl_sys::mtbl_varint_length_packed'>mtbl_varint_length_packed</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_add.html'
-                               title='mtbl_sys::mtbl_writer_add'>mtbl_writer_add</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_destroy.html'
-                               title='mtbl_sys::mtbl_writer_destroy'>mtbl_writer_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_init.html'
-                               title='mtbl_sys::mtbl_writer_init'>mtbl_writer_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_init_fd.html'
-                               title='mtbl_sys::mtbl_writer_init_fd'>mtbl_writer_init_fd</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_options_destroy.html'
-                               title='mtbl_sys::mtbl_writer_options_destroy'>mtbl_writer_options_destroy</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_options_init.html'
-                               title='mtbl_sys::mtbl_writer_options_init'>mtbl_writer_options_init</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_options_set_block_restart_interval.html'
-                               title='mtbl_sys::mtbl_writer_options_set_block_restart_interval'>mtbl_writer_options_set_block_restart_interval</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_options_set_block_size.html'
-                               title='mtbl_sys::mtbl_writer_options_set_block_size'>mtbl_writer_options_set_block_size</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.mtbl_writer_options_set_compression.html'
-                               title='mtbl_sys::mtbl_writer_options_set_compression'>mtbl_writer_options_set_compression</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_crc32c.html'
+                                  title='mtbl_sys::mtbl_crc32c'>mtbl_crc32c</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_destroy.html'
+                                  title='mtbl_sys::mtbl_fileset_destroy'>mtbl_fileset_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_init.html'
+                                  title='mtbl_sys::mtbl_fileset_init'>mtbl_fileset_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_options_destroy.html'
+                                  title='mtbl_sys::mtbl_fileset_options_destroy'>mtbl_fileset_options_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_options_init.html'
+                                  title='mtbl_sys::mtbl_fileset_options_init'>mtbl_fileset_options_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_options_set_merge_func.html'
+                                  title='mtbl_sys::mtbl_fileset_options_set_merge_func'>mtbl_fileset_options_set_merge_func</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_options_set_reload_interval.html'
+                                  title='mtbl_sys::mtbl_fileset_options_set_reload_interval'>mtbl_fileset_options_set_reload_interval</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_reload.html'
+                                  title='mtbl_sys::mtbl_fileset_reload'>mtbl_fileset_reload</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_reload_now.html'
+                                  title='mtbl_sys::mtbl_fileset_reload_now'>mtbl_fileset_reload_now</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fileset_source.html'
+                                  title='mtbl_sys::mtbl_fileset_source'>mtbl_fileset_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fixed_decode32.html'
+                                  title='mtbl_sys::mtbl_fixed_decode32'>mtbl_fixed_decode32</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fixed_decode64.html'
+                                  title='mtbl_sys::mtbl_fixed_decode64'>mtbl_fixed_decode64</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fixed_encode32.html'
+                                  title='mtbl_sys::mtbl_fixed_encode32'>mtbl_fixed_encode32</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_fixed_encode64.html'
+                                  title='mtbl_sys::mtbl_fixed_encode64'>mtbl_fixed_encode64</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_iter_destroy.html'
+                                  title='mtbl_sys::mtbl_iter_destroy'>mtbl_iter_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_iter_next.html'
+                                  title='mtbl_sys::mtbl_iter_next'>mtbl_iter_next</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_add_source.html'
+                                  title='mtbl_sys::mtbl_merger_add_source'>mtbl_merger_add_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_destroy.html'
+                                  title='mtbl_sys::mtbl_merger_destroy'>mtbl_merger_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_init.html'
+                                  title='mtbl_sys::mtbl_merger_init'>mtbl_merger_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_options_destroy.html'
+                                  title='mtbl_sys::mtbl_merger_options_destroy'>mtbl_merger_options_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_options_init.html'
+                                  title='mtbl_sys::mtbl_merger_options_init'>mtbl_merger_options_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_options_set_merge_func.html'
+                                  title='mtbl_sys::mtbl_merger_options_set_merge_func'>mtbl_merger_options_set_merge_func</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_merger_source.html'
+                                  title='mtbl_sys::mtbl_merger_source'>mtbl_merger_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_bytes_data_blocks.html'
+                                  title='mtbl_sys::mtbl_metadata_bytes_data_blocks'>mtbl_metadata_bytes_data_blocks</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of bytes consumed by data blocks.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_bytes_index_block.html'
+                                  title='mtbl_sys::mtbl_metadata_bytes_index_block'>mtbl_metadata_bytes_index_block</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of bytes consumed by the index.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_bytes_keys.html'
+                                  title='mtbl_sys::mtbl_metadata_bytes_keys'>mtbl_metadata_bytes_keys</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of bytes that all keys would occupy if stored end-to-end in a byte array with no delimiters.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_bytes_values.html'
+                                  title='mtbl_sys::mtbl_metadata_bytes_values'>mtbl_metadata_bytes_values</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of bytes that all values in the file would occupy if stored end-to-end in a byte array with no delimiters.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_compression_algorithm.html'
+                                  title='mtbl_sys::mtbl_metadata_compression_algorithm'>mtbl_metadata_compression_algorithm</a></td>
+                           <td class='docblock-short'>
+                                <p>One of the compression values allowed by mtbl_writer(3).</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_count_data_blocks.html'
+                                  title='mtbl_sys::mtbl_metadata_count_data_blocks'>mtbl_metadata_count_data_blocks</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of data blocks.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_count_entries.html'
+                                  title='mtbl_sys::mtbl_metadata_count_entries'>mtbl_metadata_count_entries</a></td>
+                           <td class='docblock-short'>
+                                <p>Total number of key-value entries.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_data_block_size.html'
+                                  title='mtbl_sys::mtbl_metadata_data_block_size'>mtbl_metadata_data_block_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Maximum size of an uncompressed data block, see mtbl_writer(3).</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_metadata_index_block_offset.html'
+                                  title='mtbl_sys::mtbl_metadata_index_block_offset'>mtbl_metadata_index_block_offset</a></td>
+                           <td class='docblock-short'>
+                                <p>Byte offset in the MTBL file where the index begins.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_destroy.html'
+                                  title='mtbl_sys::mtbl_reader_destroy'>mtbl_reader_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_init.html'
+                                  title='mtbl_sys::mtbl_reader_init'>mtbl_reader_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_init_fd.html'
+                                  title='mtbl_sys::mtbl_reader_init_fd'>mtbl_reader_init_fd</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_metadata.html'
+                                  title='mtbl_sys::mtbl_reader_metadata'>mtbl_reader_metadata</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_options_destroy.html'
+                                  title='mtbl_sys::mtbl_reader_options_destroy'>mtbl_reader_options_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_options_init.html'
+                                  title='mtbl_sys::mtbl_reader_options_init'>mtbl_reader_options_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_options_set_madvise_random.html'
+                                  title='mtbl_sys::mtbl_reader_options_set_madvise_random'>mtbl_reader_options_set_madvise_random</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_options_set_verify_checksums.html'
+                                  title='mtbl_sys::mtbl_reader_options_set_verify_checksums'>mtbl_reader_options_set_verify_checksums</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_reader_source.html'
+                                  title='mtbl_sys::mtbl_reader_source'>mtbl_reader_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_add.html'
+                                  title='mtbl_sys::mtbl_sorter_add'>mtbl_sorter_add</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_destroy.html'
+                                  title='mtbl_sys::mtbl_sorter_destroy'>mtbl_sorter_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_init.html'
+                                  title='mtbl_sys::mtbl_sorter_init'>mtbl_sorter_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_iter.html'
+                                  title='mtbl_sys::mtbl_sorter_iter'>mtbl_sorter_iter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_options_destroy.html'
+                                  title='mtbl_sys::mtbl_sorter_options_destroy'>mtbl_sorter_options_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_options_init.html'
+                                  title='mtbl_sys::mtbl_sorter_options_init'>mtbl_sorter_options_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_options_set_max_memory.html'
+                                  title='mtbl_sys::mtbl_sorter_options_set_max_memory'>mtbl_sorter_options_set_max_memory</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_options_set_merge_func.html'
+                                  title='mtbl_sys::mtbl_sorter_options_set_merge_func'>mtbl_sorter_options_set_merge_func</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_options_set_temp_dir.html'
+                                  title='mtbl_sys::mtbl_sorter_options_set_temp_dir'>mtbl_sorter_options_set_temp_dir</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_sorter_write.html'
+                                  title='mtbl_sys::mtbl_sorter_write'>mtbl_sorter_write</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_source_get.html'
+                                  title='mtbl_sys::mtbl_source_get'>mtbl_source_get</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_source_get_prefix.html'
+                                  title='mtbl_sys::mtbl_source_get_prefix'>mtbl_source_get_prefix</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_source_get_range.html'
+                                  title='mtbl_sys::mtbl_source_get_range'>mtbl_source_get_range</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_source_iter.html'
+                                  title='mtbl_sys::mtbl_source_iter'>mtbl_source_iter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_decode32.html'
+                                  title='mtbl_sys::mtbl_varint_decode32'>mtbl_varint_decode32</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_decode64.html'
+                                  title='mtbl_sys::mtbl_varint_decode64'>mtbl_varint_decode64</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_encode32.html'
+                                  title='mtbl_sys::mtbl_varint_encode32'>mtbl_varint_encode32</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_encode64.html'
+                                  title='mtbl_sys::mtbl_varint_encode64'>mtbl_varint_encode64</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_length.html'
+                                  title='mtbl_sys::mtbl_varint_length'>mtbl_varint_length</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_varint_length_packed.html'
+                                  title='mtbl_sys::mtbl_varint_length_packed'>mtbl_varint_length_packed</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_add.html'
+                                  title='mtbl_sys::mtbl_writer_add'>mtbl_writer_add</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_destroy.html'
+                                  title='mtbl_sys::mtbl_writer_destroy'>mtbl_writer_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_init.html'
+                                  title='mtbl_sys::mtbl_writer_init'>mtbl_writer_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_init_fd.html'
+                                  title='mtbl_sys::mtbl_writer_init_fd'>mtbl_writer_init_fd</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_options_destroy.html'
+                                  title='mtbl_sys::mtbl_writer_options_destroy'>mtbl_writer_options_destroy</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_options_init.html'
+                                  title='mtbl_sys::mtbl_writer_options_init'>mtbl_writer_options_init</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_options_set_block_restart_interval.html'
+                                  title='mtbl_sys::mtbl_writer_options_set_block_restart_interval'>mtbl_writer_options_set_block_restart_interval</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_options_set_block_size.html'
+                                  title='mtbl_sys::mtbl_writer_options_set_block_size'>mtbl_writer_options_set_block_size</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.mtbl_writer_options_set_compression.html'
+                                  title='mtbl_sys::mtbl_writer_options_set_compression'>mtbl_writer_options_set_compression</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -705,6 +725,8 @@ operations only.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

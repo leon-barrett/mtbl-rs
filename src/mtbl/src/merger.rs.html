@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -340,7 +341,7 @@
     }
 
     <span class='doccomment'>/// Add an additional source of data to be merged.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_source</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='lifetime'>&#39;static</span> <span class='op'>+</span> <span class='ident'>Read</span><span class='op'>&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='kw'>Self</span>, <span class='ident'>source</span>: <span class='ident'>T</span>) {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_source</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='lifetime'>&#39;static</span> <span class='op'>+</span> <span class='ident'>Read</span><span class='op'>&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>Self</span>, <span class='ident'>source</span>: <span class='ident'>T</span>) {
         <span class='kw'>unsafe</span> {
             <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_merger_add_source</span>(<span class='self'>self</span>.<span class='ident'>mtbl_merger</span>, <span class='op'>*</span><span class='ident'>source</span>.<span class='ident'>raw_mtbl_source</span>());
         }
@@ -468,6 +469,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

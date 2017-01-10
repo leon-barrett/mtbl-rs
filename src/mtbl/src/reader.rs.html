@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -404,6 +405,115 @@
 <span id="361">361</span>
 <span id="362">362</span>
 <span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
+<span id="464">464</span>
+<span id="465">465</span>
+<span id="466">466</span>
+<span id="467">467</span>
+<span id="468">468</span>
+<span id="469">469</span>
+<span id="470">470</span>
+<span id="471">471</span>
+<span id="472">472</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>libc</span>::<span class='ident'>size_t</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>File</span>;
@@ -415,6 +525,8 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>slice</span>;
 
 <span class='kw'>use</span> <span class='ident'>mtbl_sys</span>;
+
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>CompressionType</span>;
 
 <span class='doccomment'>/// A trait for objects that can read keys from an MTBL file.</span>
 <span class='doccomment'>///</span>
@@ -428,7 +540,7 @@
 
     <span class='doccomment'>/// Get the value of a key, if it&#39;s present.</span>
     <span class='kw'>fn</span> <span class='ident'>get</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>key</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span>
-        <span class='kw'>where</span> <span class='kw'>Self</span>: <span class='ident'>Sized</span>,
+        <span class='kw'>where</span> <span class='self'>Self</span>: <span class='ident'>Sized</span>,
               <span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span>[<span class='ident'>u8</span>]<span class='op'>&gt;</span>
     {
         <span class='kw'>let</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>key</span>.<span class='ident'>as_ref</span>();
@@ -464,7 +576,7 @@
 
     <span class='doccomment'>/// Get an iterator over all keys and values where the key starts with the given prefix.</span>
     <span class='kw'>fn</span> <span class='ident'>get_prefix</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>prefix</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>Iter</span>
-        <span class='kw'>where</span> <span class='kw'>Self</span>: <span class='ident'>Sized</span>,
+        <span class='kw'>where</span> <span class='self'>Self</span>: <span class='ident'>Sized</span>,
               <span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span>[<span class='ident'>u8</span>]<span class='op'>&gt;</span>
     {
         <span class='kw'>let</span> <span class='ident'>prefix</span> <span class='op'>=</span> <span class='ident'>prefix</span>.<span class='ident'>as_ref</span>();
@@ -479,7 +591,7 @@
     <span class='doccomment'>/// Get an iterator over all keys and values, where the keys are between key0 and key1</span>
     <span class='doccomment'>/// (inclusive).</span>
     <span class='kw'>fn</span> <span class='ident'>get_range</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>U</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>key0</span>: <span class='ident'>T</span>, <span class='ident'>key1</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>Iter</span>
-        <span class='kw'>where</span> <span class='kw'>Self</span>: <span class='ident'>Sized</span>,
+        <span class='kw'>where</span> <span class='self'>Self</span>: <span class='ident'>Sized</span>,
               <span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span>[<span class='ident'>u8</span>]<span class='op'>&gt;</span>,
               <span class='ident'>U</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span>[<span class='ident'>u8</span>]<span class='op'>&gt;</span>
     {
@@ -529,7 +641,7 @@
     <span class='doccomment'>/// A key, value pair.</span>
     <span class='kw'>type</span> <span class='ident'>Item</span> <span class='op'>=</span> (<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>, <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>);
 
-    <span class='kw'>fn</span> <span class='ident'>next</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Self</span>::<span class='ident'>Item</span><span class='op'>&gt;</span> {
+    <span class='kw'>fn</span> <span class='ident'>next</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='self'>Self</span>::<span class='ident'>Item</span><span class='op'>&gt;</span> {
         <span class='kw'>unsafe</span> {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>keyptr</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>u8</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>keylen</span>: <span class='ident'>size_t</span> <span class='op'>=</span> <span class='number'>0</span>;
@@ -562,38 +674,58 @@
 <span class='doccomment'>/// MTBL Reader opening options.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>,<span class='ident'>Copy</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ReaderOptions</span> {
-    <span class='comment'>// in mtbl v0.8.0</span>
-    <span class='comment'>// pub madvise_random: Option&lt;bool&gt;,</span>
     <span class='doccomment'>/// Whether or not the CRC32C checksum on each data block should be verified</span>
     <span class='doccomment'>/// or not. If verify_checksums is enabled, a checksum mismatch will cause a</span>
     <span class='doccomment'>/// runtime error. The mtbl default is false.</span>
     <span class='kw'>pub</span> <span class='ident'>verify_checksums</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
+    <span class='doccomment'>/// Specifies whether the kernel should be advised if the data access</span>
+    <span class='doccomment'>/// patterns are expected to be random or not. This may hurt some workloads</span>
+    <span class='doccomment'>/// but help others. This defaults to false.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// This option can be explicitly overridden by setting the environment</span>
+    <span class='doccomment'>/// variable MTBL_READER_MADVISE_RANDOM to the string &quot;0&quot; (force disable) or</span>
+    <span class='doccomment'>/// &quot;1&quot; (force enable).</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// This option only has any effect on systems that have the posix_madvise</span>
+    <span class='doccomment'>/// or madvise system calls.</span>
+    <span class='kw'>pub</span> <span class='ident'>madvise_random</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>ReaderOptions</span> {
     <span class='doccomment'>/// Create a ReaderOptions containing only defaults.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() <span class='op'>-&gt;</span> <span class='ident'>ReaderOptions</span> {
-        <span class='ident'>ReaderOptions</span> { <span class='ident'>verify_checksums</span>: <span class='prelude-val'>None</span> }
+        <span class='ident'>ReaderOptions</span> {
+            <span class='ident'>verify_checksums</span>: <span class='prelude-val'>None</span>,
+            <span class='ident'>madvise_random</span>: <span class='prelude-val'>None</span>,
+        }
     }
 
     <span class='doccomment'>/// Create a new options with verify_checksums set.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>verify_checksums</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw'>Self</span>, <span class='ident'>verify_checksums</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>ReaderOptions</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>verify_checksums</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>verify_checksums</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>ReaderOptions</span> {
         <span class='ident'>ReaderOptions</span> { <span class='ident'>verify_checksums</span>: <span class='prelude-val'>Some</span>(<span class='ident'>verify_checksums</span>), ..<span class='op'>*</span><span class='self'>self</span> }
+    }
+
+    <span class='doccomment'>/// Create a new options with madvise_random set.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>madvise_random</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>madvise_random</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>ReaderOptions</span> {
+        <span class='ident'>ReaderOptions</span> { <span class='ident'>madvise_random</span>: <span class='prelude-val'>Some</span>(<span class='ident'>madvise_random</span>), ..<span class='op'>*</span><span class='self'>self</span> }
     }
 
     <span class='doccomment'>/// Open an MTBL reader with these options from a file described by the</span>
     <span class='doccomment'>/// given path.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_path</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span><span class='ident'>Path</span><span class='op'>&gt;&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw'>Self</span>, <span class='ident'>path</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IOResult</span><span class='op'>&lt;</span><span class='ident'>Reader</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_path</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span><span class='ident'>Path</span><span class='op'>&gt;&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>path</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IOResult</span><span class='op'>&lt;</span><span class='ident'>Reader</span><span class='op'>&gt;</span> {
         <span class='ident'>File</span>::<span class='ident'>open</span>(<span class='ident'>path</span>).<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>f</span><span class='op'>|</span> <span class='self'>self</span>.<span class='ident'>open_from_file</span>(<span class='kw-2'>&amp;</span><span class='ident'>f</span>))
     }
 
     <span class='doccomment'>/// Open an MTBL reader with these options from a file object.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_file</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='lifetime'>&#39;static</span> <span class='op'>+</span> <span class='ident'>AsRawFd</span><span class='op'>&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw'>Self</span>, <span class='ident'>file</span>: <span class='kw-2'>&amp;</span><span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IOResult</span><span class='op'>&lt;</span><span class='ident'>Reader</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_file</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='lifetime'>&#39;static</span> <span class='op'>+</span> <span class='ident'>AsRawFd</span><span class='op'>&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>file</span>: <span class='kw-2'>&amp;</span><span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IOResult</span><span class='op'>&lt;</span><span class='ident'>Reader</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>fd</span> <span class='op'>=</span> <span class='ident'>file</span>.<span class='ident'>as_raw_fd</span>();
         <span class='kw'>unsafe</span> {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mtbl_options</span> <span class='op'>=</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_options_init</span>();
             <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>verify_checksums</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>verify_checksums</span> {
                 <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_options_set_verify_checksums</span>(<span class='ident'>mtbl_options</span>, <span class='ident'>verify_checksums</span>);
+            }
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>madvise_random</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>madvise_random</span> {
+                <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_options_set_madvise_random</span>(<span class='ident'>mtbl_options</span>, <span class='ident'>madvise_random</span>);
             }
             <span class='kw'>let</span> <span class='ident'>mtbl_reader</span> <span class='op'>=</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_init_fd</span>(<span class='ident'>fd</span>, <span class='ident'>mtbl_options</span>);
             <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_options_destroy</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_options</span>);
@@ -604,6 +736,7 @@
                     <span class='ident'>options</span>: <span class='op'>*</span><span class='self'>self</span>,
                     <span class='ident'>mtbl_reader</span>: <span class='ident'>mtbl_reader</span>,
                     <span class='ident'>mtbl_source</span>: <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_source</span>(<span class='ident'>mtbl_reader</span>),
+                    <span class='ident'>mtbl_metadata</span>: <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader_metadata</span>(<span class='ident'>mtbl_reader</span>),
                 })
             }
         }
@@ -621,6 +754,7 @@
     <span class='kw'>pub</span> <span class='ident'>options</span>: <span class='ident'>ReaderOptions</span>,
     <span class='ident'>mtbl_reader</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_reader</span>,
     <span class='ident'>mtbl_source</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_source</span>,
+    <span class='ident'>mtbl_metadata</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Reader</span> {
@@ -632,6 +766,69 @@
     <span class='doccomment'>/// Open an MTBL reader from a file object.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_file</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='lifetime'>&#39;static</span> <span class='op'>+</span> <span class='ident'>AsRawFd</span><span class='op'>&gt;</span>(<span class='ident'>file</span>: <span class='kw-2'>&amp;</span><span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IOResult</span><span class='op'>&lt;</span><span class='ident'>Reader</span><span class='op'>&gt;</span> {
         <span class='ident'>ReaderOptions</span>::<span class='ident'>new</span>().<span class='ident'>open_from_file</span>(<span class='ident'>file</span>)
+    }
+
+    <span class='doccomment'>/// Metadata: Byte offset in the MTBL file where the index begins.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>index_block_offset</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_index_block_offset</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Maximum size of an uncompressed data block, see mtbl_writer(3).</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>data_block_size</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_data_block_size</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: One of the compression values allowed by mtbl_writer(3).</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>compression_algorithm</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>CompressionType</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_compression_algorithm</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of key-value entries.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_entries</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_count_entries</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of data blocks.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_data_blocks</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_count_data_blocks</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of bytes consumed by data blocks.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bytes_data_blocks</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_bytes_data_blocks</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of bytes consumed by the index.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bytes_index_block</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_bytes_index_block</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of bytes that all keys would occupy if stored end-to-end in a byte array with no delimiters.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bytes_keys</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_bytes_keys</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
+    }
+
+    <span class='doccomment'>/// Metadata: Total number of bytes that all values in the file would occupy if stored end-to-end in a byte array with no delimiters.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bytes_values</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+        <span class='kw'>unsafe</span> {
+            <span class='ident'>mtbl_sys</span>::<span class='ident'>mtbl_metadata_bytes_values</span>(<span class='self'>self</span>.<span class='ident'>mtbl_metadata</span>)
+        }
     }
 }
 
@@ -675,7 +872,7 @@
     <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>sync</span>::<span class='ident'>Arc</span>;
     <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>;
 
-    <span class='kw'>use</span> <span class='ident'>reader</span>::{<span class='ident'>ReaderOptions</span>, <span class='ident'>Read</span>, <span class='ident'>Reader</span>};
+    <span class='kw'>use</span> <span class='ident'>reader</span>::{<span class='ident'>CompressionType</span>, <span class='ident'>ReaderOptions</span>, <span class='ident'>Read</span>, <span class='ident'>Reader</span>};
     <span class='kw'>use</span> <span class='ident'>writer</span>::{<span class='ident'>Write</span>, <span class='ident'>Writer</span>};
 
     <span class='comment'>// Create a test MTBL file.</span>
@@ -742,10 +939,12 @@
         <span class='kw'>let</span> <span class='ident'>tempfile_reader</span> <span class='op'>=</span> <span class='ident'>tempfile_writer</span>.<span class='ident'>reopen</span>().<span class='ident'>unwrap</span>();
         <span class='ident'>create_mtbl</span>(<span class='ident'>tempfile_writer</span>);
         <span class='kw'>let</span> <span class='ident'>reader</span> <span class='op'>=</span> <span class='ident'>ReaderOptions</span>::<span class='ident'>new</span>()
-                         .<span class='ident'>verify_checksums</span>(<span class='boolval'>true</span>)
+                         .<span class='ident'>verify_checksums</span>(<span class='bool-val'>true</span>)
+                         .<span class='ident'>madvise_random</span>(<span class='bool-val'>true</span>)
                          .<span class='ident'>open_from_file</span>(<span class='kw-2'>&amp;</span><span class='ident'>tempfile_reader</span>)
                          .<span class='ident'>unwrap</span>();
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reader</span>.<span class='ident'>options</span>.<span class='ident'>verify_checksums</span>, <span class='prelude-val'>Some</span>(<span class='boolval'>true</span>));
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reader</span>.<span class='ident'>options</span>.<span class='ident'>verify_checksums</span>, <span class='prelude-val'>Some</span>(<span class='bool-val'>true</span>));
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reader</span>.<span class='ident'>options</span>.<span class='ident'>madvise_random</span>, <span class='prelude-val'>Some</span>(<span class='bool-val'>true</span>));
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>it</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>iter</span>();
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>it</span>.<span class='ident'>next</span>(), <span class='prelude-val'>Some</span>((<span class='string'>&quot;one&quot;</span>.<span class='ident'>as_bytes</span>().<span class='ident'>to_vec</span>(), <span class='string'>&quot;Hello&quot;</span>.<span class='ident'>as_bytes</span>().<span class='ident'>to_vec</span>())));
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>it</span>.<span class='ident'>next</span>(), <span class='prelude-val'>Some</span>((<span class='string'>&quot;two&quot;</span>.<span class='ident'>as_bytes</span>().<span class='ident'>to_vec</span>(), <span class='string'>&quot;world&quot;</span>.<span class='ident'>as_bytes</span>().<span class='ident'>to_vec</span>())));
@@ -766,6 +965,26 @@
         <span class='kw'>for</span> <span class='ident'>t</span> <span class='kw'>in</span> <span class='ident'>threads</span> {
             <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>t</span>.<span class='ident'>join</span>().<span class='ident'>unwrap</span>(), <span class='prelude-val'>Some</span>(<span class='string'>&quot;Hello&quot;</span>.<span class='ident'>as_bytes</span>().<span class='ident'>to_vec</span>()));
         }
+    }
+
+    <span class='attribute'>#[<span class='ident'>test</span>]</span>
+    <span class='kw'>fn</span> <span class='ident'>test_metadata</span>() {
+        <span class='kw'>let</span> <span class='ident'>tempfile_writer</span> <span class='op'>=</span> <span class='ident'>NamedTempFile</span>::<span class='ident'>new</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>tempfile_reader</span> <span class='op'>=</span> <span class='ident'>tempfile_writer</span>.<span class='ident'>reopen</span>().<span class='ident'>unwrap</span>();
+        {
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>writer</span> <span class='op'>=</span> <span class='ident'>Writer</span>::<span class='ident'>create_from_file</span>(<span class='ident'>tempfile_writer</span>).<span class='ident'>unwrap</span>();
+            <span class='ident'>writer</span>.<span class='ident'>add</span>(<span class='string'>&quot;one&quot;</span>, <span class='string'>&quot;Hello&quot;</span>).<span class='ident'>unwrap</span>();
+        }
+        <span class='kw'>let</span> <span class='ident'>reader</span> <span class='op'>=</span> <span class='ident'>Reader</span>::<span class='ident'>open_from_file</span>(<span class='kw-2'>&amp;</span><span class='ident'>tempfile_reader</span>).<span class='ident'>unwrap</span>();
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>32</span>, <span class='ident'>reader</span>.<span class='ident'>index_block_offset</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>8192</span>, <span class='ident'>reader</span>.<span class='ident'>data_block_size</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>CompressionType</span>::<span class='ident'>MTBL_COMPRESSION_ZLIB</span>, <span class='ident'>reader</span>.<span class='ident'>compression_algorithm</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>reader</span>.<span class='ident'>count_entries</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>reader</span>.<span class='ident'>count_data_blocks</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>32</span>, <span class='ident'>reader</span>.<span class='ident'>bytes_data_blocks</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>23</span>, <span class='ident'>reader</span>.<span class='ident'>bytes_index_block</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>3</span>, <span class='ident'>reader</span>.<span class='ident'>bytes_keys</span>());
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>5</span>, <span class='ident'>reader</span>.<span class='ident'>bytes_values</span>());
     }
 }
 </pre>
@@ -792,6 +1011,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

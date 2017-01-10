@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
 
     
     
@@ -255,13 +256,13 @@
     }
 
     <span class='doccomment'>/// Create a modified `FilesetOptions` with reload_interval_seconds set.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>reload_interval_seconds</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw'>Self</span>, <span class='ident'>reload_interval_seconds</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='ident'>FilesetOptions</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>reload_interval_seconds</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>, <span class='ident'>reload_interval_seconds</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='ident'>FilesetOptions</span> {
         <span class='ident'>FilesetOptions</span> { <span class='ident'>reload_interval_seconds</span>: <span class='prelude-val'>Some</span>(<span class='ident'>reload_interval_seconds</span>), ..<span class='op'>*</span><span class='self'>self</span> }
     }
 
     <span class='doccomment'>/// Open a `Fileset` with these options from the specified setfile. Note that you must include</span>
     <span class='doccomment'>/// a `MergeFn` to combine colliding entries that have the same key.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_path</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span><span class='ident'>Path</span><span class='op'>&gt;&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='kw'>Self</span>,
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>open_from_path</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>AsRef</span><span class='op'>&lt;</span><span class='ident'>Path</span><span class='op'>&gt;&gt;</span>(<span class='self'>self</span>: <span class='kw-2'>&amp;</span><span class='self'>Self</span>,
                                           <span class='ident'>setfile</span>: <span class='ident'>T</span>,
                                           <span class='ident'>merge_fn</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>merger</span>::<span class='ident'>MergeFn</span><span class='op'>&gt;</span>)
                                           <span class='op'>-&gt;</span> <span class='ident'>Fileset</span> {
@@ -434,6 +435,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

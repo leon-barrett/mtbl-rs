@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>mtbl</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/mtbl/src/lib.rs.html#1-122' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/mtbl/src/lib.rs.html#1-122' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Rust bindings to the <a href="https://github.com/farsightsec/mtbl">mtbl</a> library for
 dealing with SSTables (immutable sorted map files).</p>
 
@@ -57,7 +58,7 @@ bindings</a>), except using sorted maps
 instead of hashmaps. SSTables are suitable for storing the output of
 mapreduces or other batch results for easy lookup later.</p>
 
-<p>Version 0.1.0 of this library is a rather literal translation of the mtbl C
+<p>Version 0.2.0 of this library is a rather literal translation of the mtbl C
 API. Later versions may change the API to be friendlier and more in the
 Rust idioms.</p>
 
@@ -71,7 +72,7 @@ Rust idioms.</p>
   <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>writer</span> <span class='op'>=</span> <span class='ident'>mtbl</span>::<span class='ident'>Sorter</span>::<span class='ident'>create</span>(<span class='string'>&quot;data.mtbl&quot;</span>);
   <span class='ident'>writer</span>.<span class='ident'>add</span>(<span class='string'>&quot;key&quot;</span>, <span class='string'>&quot;value&quot;</span>);
   <span class='comment'>// Data is flushed to file when the writer/sorter is destroyed.</span>
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h2 id='reading-from-a-database' class='section-header'><a href='#reading-from-a-database'>Reading from a database</a></h2>
 <pre class='rust rust-example-rendered'>
@@ -83,7 +84,7 @@ Rust idioms.</p>
 <span class='comment'>// Or iterate over all entries</span>
 <span class='kw'>for</span> (<span class='ident'>key</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>, <span class='ident'>value</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>) <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='ident'>reader</span> {
     <span class='ident'>f</span>(<span class='ident'>key</span>, <span class='ident'>value</span>);
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h1 id='more-details-about-mtbl' class='section-header'><a href='#more-details-about-mtbl'>More details about MTBL</a></h1>
 <p>Quoting from the MTBL documentation:</p>
@@ -139,116 +140,103 @@ doesn&#39;t go mucking about with file pointers.</li>
 </ul>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Fileset.html'
-                               title='mtbl::Fileset'>Fileset</a></td>
-                        <td class='docblock short'>
-                             <p>An MTBL reader that watches a &quot;setfile&quot; containing a list of MTBL files to
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Fileset.html'
+                                  title='mtbl::Fileset'>Fileset</a></td>
+                           <td class='docblock-short'>
+                                <p>An MTBL reader that watches a &quot;setfile&quot; containing a list of MTBL files to
 read from.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.FilesetOptions.html'
-                               title='mtbl::FilesetOptions'>FilesetOptions</a></td>
-                        <td class='docblock short'>
-                             <p>Options for opening an MTBL fileset.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Merger.html'
-                               title='mtbl::Merger'>Merger</a></td>
-                        <td class='docblock short'>
-                             <p>An MTBL reader that opens and reads from several MTBL files, merging their
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.FilesetOptions.html'
+                                  title='mtbl::FilesetOptions'>FilesetOptions</a></td>
+                           <td class='docblock-short'>
+                                <p>Options for opening an MTBL fileset.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Merger.html'
+                                  title='mtbl::Merger'>Merger</a></td>
+                           <td class='docblock-short'>
+                                <p>An MTBL reader that opens and reads from several MTBL files, merging their
 contents.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Reader.html'
-                               title='mtbl::Reader'>Reader</a></td>
-                        <td class='docblock short'>
-                             <p>A reader for a single MTBL file.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.ReaderOptions.html'
-                               title='mtbl::ReaderOptions'>ReaderOptions</a></td>
-                        <td class='docblock short'>
-                             <p>MTBL Reader opening options.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Sorter.html'
-                               title='mtbl::Sorter'>Sorter</a></td>
-                        <td class='docblock short'>
-                             <p>A tool to create an MTBL file out of keys in any order.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.SorterOptions.html'
-                               title='mtbl::SorterOptions'>SorterOptions</a></td>
-                        <td class='docblock short'>
-                             <p>Options used to create a <code>Sorter</code>.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Writer.html'
-                               title='mtbl::Writer'>Writer</a></td>
-                        <td class='docblock short'>
-                             <p>A struct to create an MTBL file from keys and values in sorted order.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.WriterOptions.html'
-                               title='mtbl::WriterOptions'>WriterOptions</a></td>
-                        <td class='docblock short'>
-                             <p>Options for writing an MTBL file.</p>
-                        </td>
-                    </tr>
-                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Reader.html'
+                                  title='mtbl::Reader'>Reader</a></td>
+                           <td class='docblock-short'>
+                                <p>A reader for a single MTBL file.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ReaderOptions.html'
+                                  title='mtbl::ReaderOptions'>ReaderOptions</a></td>
+                           <td class='docblock-short'>
+                                <p>MTBL Reader opening options.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Sorter.html'
+                                  title='mtbl::Sorter'>Sorter</a></td>
+                           <td class='docblock-short'>
+                                <p>A tool to create an MTBL file out of keys in any order.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SorterOptions.html'
+                                  title='mtbl::SorterOptions'>SorterOptions</a></td>
+                           <td class='docblock-short'>
+                                <p>Options used to create a <code>Sorter</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Writer.html'
+                                  title='mtbl::Writer'>Writer</a></td>
+                           <td class='docblock-short'>
+                                <p>A struct to create an MTBL file from keys and values in sorted order.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.WriterOptions.html'
+                                  title='mtbl::WriterOptions'>WriterOptions</a></td>
+                           <td class='docblock-short'>
+                                <p>Options for writing an MTBL file.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.CompressionType.html'
-                               title='mtbl::CompressionType'>CompressionType</a></td>
-                        <td class='docblock short'>
-                             <p>Compression method used when writing an MTBL file.</p>
-                        </td>
-                    </tr>
-                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.CompressionType.html'
+                                  title='mtbl::CompressionType'>CompressionType</a></td>
+                           <td class='docblock-short'>
+                                <p>Compression method used when writing an MTBL file.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='trait' href='trait.Read.html'
-                               title='mtbl::Read'>Read</a></td>
-                        <td class='docblock short'>
-                             <p>A trait for objects that can read keys from an MTBL file.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='trait' href='trait.Write.html'
-                               title='mtbl::Write'>Write</a></td>
-                        <td class='docblock short'>
-                             <p>A trait for objects that can write an MTBL file.</p>
-                        </td>
-                    </tr>
-                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Read.html'
+                                  title='mtbl::Read'>Read</a></td>
+                           <td class='docblock-short'>
+                                <p>A trait for objects that can read keys from an MTBL file.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Write.html'
+                                  title='mtbl::Write'>Write</a></td>
+                           <td class='docblock-short'>
+                                <p>A trait for objects that can write an MTBL file.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='type' href='type.MergeFn.html'
-                               title='mtbl::MergeFn'>MergeFn</a></td>
-                        <td class='docblock short'>
-                             <p>An MTBL merging function: given a key and two values for that key, create a
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.MergeFn.html'
+                                  title='mtbl::MergeFn'>MergeFn</a></td>
+                           <td class='docblock-short'>
+                                <p>An MTBL merging function: given a key and two values for that key, create a
 merged value for that key.</p>
-                        </td>
-                    </tr>
-                </table></section>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -271,6 +259,8 @@ merged value for that key.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

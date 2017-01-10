@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Fileset","An MTBL reader that watches a \"setfile\" containing a list of MTBL files to read from."],["FilesetOptions","Options for opening an MTBL fileset."]]});
