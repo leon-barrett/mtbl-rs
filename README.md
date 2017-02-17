@@ -29,7 +29,7 @@ Add `mtbl` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-mtbl = "0.2.0"
+mtbl = "0.2.1"
 ```
 
 ```rust
@@ -58,7 +58,7 @@ for (key: Vec<u8>, value: Vec<u8>) in &reader {
 
 ## Function documentation
 
-TODO
+See [the docs](https://leon-barrett.github.io/mtbl-rs/mtbl/index.html).
 
 ## More details about MTBL
 
