@@ -111,6 +111,7 @@ pub use fileset::Fileset;
 pub use fileset::FilesetOptions;
 pub use merger::MergeFn;
 pub use merger::Merger;
+pub use reader::Iter;
 pub use reader::ReaderOptions;
 pub use reader::Read;
 pub use reader::Reader;
