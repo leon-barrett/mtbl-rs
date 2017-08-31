@@ -39,7 +39,7 @@ extern crate mtbl;
 // can add keys in arbitrary (non-sorted) order.
 use mtbl::{Sorter,Write};
 {
-  let mut writer = mtbl::Sorter::create("data.mtbl");
+  let mut writer = mtbl::Sorter::create_from_path("data.mtbl");
   writer.add("key", "value");
   // Data is flushed to file when the writer/sorter is destroyed.
 }
